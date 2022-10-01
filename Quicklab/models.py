@@ -72,7 +72,7 @@ class Teacher (models.Model):
     email=models.EmailField(max_length=20)
     password=models.CharField(max_length=8)
     # practicals = models.ForeignKey("Practicals",on_delete=models.CASCADE,related_name='practicals')
-    student = models.ForeignKey("Student",on_delete=models.CASCADE,related_name='Teacher_student')
+#     student = models.ForeignKey("Student",on_delete=models.CASCADE,related_name='Teacher_student')
 
     def __str__(self):
         return '{} {}'.format(self.first_name, self.last_name, self.username, self.email,self.student.first_name, self.student.last_name)
