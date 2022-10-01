@@ -85,7 +85,7 @@ DATABASE = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'Quicklab',
         'USER': 'Cheche',
-        'PASSWORD': 'user',
+        'PASSWORD':'user',
         'HOST': 'localhost',
         'PORT': 5432,
     }

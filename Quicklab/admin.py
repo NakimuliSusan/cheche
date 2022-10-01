@@ -1,5 +1,6 @@
 from django.contrib import admin
 from . import models
+
 # Register your models here.
 
 class StudentAdmin(admin.ModelAdmin):
@@ -12,15 +13,15 @@ class TeacherAdmin(admin.ModelAdmin):
      search_fields = ('first_name', 'last_name')
 admin.site.register(models.Teacher, TeacherAdmin)
 
-class PracticalsAdmin(admin.ModelAdmin):
+class PracticalAdmin(admin.ModelAdmin):
      list_display = ('description', 'title', 'tools', 'status','comments') 
      search_fields = ('description', 'status', 'comments')
-admin.site.register(models.Practical, PracticalsAdmin)
+admin.site.register(models.Practical, PracticalAdmin)
 
 
-class ToolsAdmin(admin.ModelAdmin):
+class ToolAdmin(admin.ModelAdmin):
      list_display = ('label', 'subject', 'image') 
      search_fields = ('label', 'subject', 'image')
-admin.site.register(models.Tool, ToolsAdmin)
+admin.site.register(models.Tool, ToolAdmin)
 
 
