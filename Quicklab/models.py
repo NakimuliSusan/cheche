@@ -14,7 +14,7 @@ class Student(models.Model):
            ("Form 4", "Form4"),
     )
     level=models.CharField(max_length=10, choices=LEVELS)
-    no_of_practicals =models.IntegerField()
+    no_of_practicals =models.IntegerField(default=0)
     def __str__(self):
         return '{} {}'.format(self.first_name, self.last_name, self.username, self.password)
  
