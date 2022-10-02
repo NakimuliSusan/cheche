@@ -26,7 +26,7 @@ class Teacher (models.Model):
     username=models.CharField(max_length=20)
     email=models.EmailField(max_length=20)
     password=models.CharField(max_length=8)
-    # practicals = models.ManyToManyField(Practicals, blank=True, related_name="Practicals")
+    practicals = models.ForeignKey("Practical", on_delete=models.CASCADE, related_name="Teacher_practical", default=1)
     student = models.ForeignKey("Student",on_delete=models.CASCADE,related_name='Teacher_student')
 
     def __str__(self):
