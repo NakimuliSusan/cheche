@@ -37,10 +37,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+<<<<<<< HEAD
     'rest_framework',
     'rest_framework.authtoken',
     'Quicklab',
     'knox'
+=======
+    'Quicklab',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'knox'
+
+>>>>>>> dedd2ab8953559fe6520e22b91c4a9a29c09e77f
 ]
 
 MIDDLEWARE = [
