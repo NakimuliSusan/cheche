@@ -73,7 +73,7 @@ class Practical(models.Model):
     observation = models.TextField(max_length=255, blank=True, null=True)
     time_date = models.DateTimeField(auto_now_add=True)
     comment_description = models.TextField(max_length=255, blank=True, null=True)
-    tools = models.ForeignKey(Tool, on_delete=models.CASCADE,related_name='Teacher_student')
+    tools = models.ForeignKey(Tool, on_delete=models.CASCADE,related_name='Tool_practical')
 
 
 
