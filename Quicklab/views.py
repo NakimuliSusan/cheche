@@ -20,7 +20,6 @@ from rest_framework.authtoken.views import ObtainAuthToken
 
 
 
-<<<<<<< HEAD
 @csrf_exempt
 def teacherApi(request,id=0):
     if request.method=='GET':
@@ -52,7 +51,7 @@ def teacherApi(request,id=0):
 
 
 class RegisterAPI(generics.GenericAPIView):
-    serializer_class = serializers.RegisterSerializer
+    serializer_class = serializers.TeacherRegisterSerializer
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -82,113 +81,6 @@ class LoginAPI(KnoxLoginView):
             'teacher':serializers.TeacherSerializer(teacher, context=self.get_serializer_context()).data,
             'token':token
         })
-
-
-# class GenericAPIView(generics.GenericAPIView, mixins.ListModelMixin, mixins.CreateModelMixin, mixins.UpdateModelMixin,  mixins.RetrieveModelMixin, mixins.DestroyModelMixin):
-#     serializer_class = serializers.TeacherSerializer
-#     queryset = models.Teacher.objects.all()
-=======
-# class GenericAPIView(generics.GenericAPIView, mixins.ListModelMixin, mixins.CreateModelMixin, mixins.UpdateModelMixin,  mixins.RetrieveModelMixin, mixins.DestroyModelMixin):
-#     serializer_class = serializers.StudentSerializer
-#     queryset = models.Student.objects.all()
->>>>>>> dedd2ab8953559fe6520e22b91c4a9a29c09e77f
-#     lookup_field = "id"
-
-#     #authentication_classes = [SessionAuthentication, BasicAuthentication]
-#     authentication_classes = [TokenAuthentication]
-#     permission_classes = [IsAuthenticated]
-
-#     def get(self, request, id=None):
-#         if id:
-#             return self.retrieve(request)
-#         else:
-#             return self.list(request)
-
-#     def post(self,request):
-#         return self.create(request)
-
-#     def put(self, request, id=None):
-#         return self.update(request, id)
-
-#     def delete(self, request, id):
-#         return self.destroy(request, id)
-
-
-<<<<<<< HEAD
-# class TeacherAPIView(APIView):
-#     def get(self, request):
-#         teachers = models.Teacher.objects.all()
-#         serializer = serializers.TeacherSerializer(teachers, many=True)
-=======
-# class StudentAPIView(APIView):
-#     def get(self, request):
-#         students = models.Student.objects.all()
-#         serializer = serializers.StudentSerializer(students, many=True)
->>>>>>> dedd2ab8953559fe6520e22b91c4a9a29c09e77f
-#         return Response(serializer.data)
-
-#     def post(self, request):
-#         data = JSONParser().parse(request)
-<<<<<<< HEAD
-#         serializer = serializers.TeacherSerializer(data=data)
-=======
-#         serializer = serializers.StudentSerializer(data=data)
->>>>>>> dedd2ab8953559fe6520e22b91c4a9a29c09e77f
-
-#         if serializer.is_valid():
-#             serializer.save()
-#             return JsonResponse(serializer.data, status=status.HTTP_201_CREATED)
-#         return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-<<<<<<< HEAD
-# class TeacherDetailAPIView(APIView):
-#     def get_object(self, id):
-#         try:
-#             return models.Teacher.objects.get(id=id)
-
-#         except models.Teacher.DoesNotExist:
-#             return HttpResponse(status=status.HTTP_404_NOT_FOUND)
-
-#     def get(self, request, id):
-#         teacher = self.get_object(id)
-#         serializer = serializers.TeacherSerializer(teacher)
-#         return Response(serializer.data)
-    
-#     def put(self, request, id):
-#         teacher = self.get_object(id)
-#         serializer = serializers.TeacherSerializer(teacher, data=request.data)
-=======
-# class StudentDetailAPIView(APIView):
-#     def get_object(self, id):
-#         try:
-#             return models.Student.objects.get(id=id)
-
-#         except models.Student.DoesNotExist:
-#             return HttpResponse(status=status.HTTP_404_NOT_FOUND)
-
-#     def get(self, request, id):
-#         students = self.get_object(id)
-#         serializer = serializers.StudentSerializer(students)
-#         return Response(serializer.data)
-    
-#     def put(self, request, id):
-#         students = self.get_object(id)
-#         serializer = serializers.StudentSerializer(students, data=request.data)
->>>>>>> dedd2ab8953559fe6520e22b91c4a9a29c09e77f
-#         if serializer.is_valid():
-#             serializer.save()
-#             return Response(serializer.data)
-#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-#     def delete(self, request, id):
-<<<<<<< HEAD
-#         teacher = self.get_object(id)
-#         teacher.delete()
-#         return Response(status=status.HTTP_204_NO_CONTENT)
-=======
-#         students = self.get_object(id)
-#         students.delete()
-#         return Response(status=status.HTTP_204_NO_CONTENT)
 
 @csrf_exempt
 def studentApi(request,id=0):
@@ -250,4 +142,3 @@ class LoginAPI(ObtainAuthToken):
         # student = serializer.validated_data['student']
         # login(request, student)
         # return super(LoginAPI, self).post(request, format=None)
->>>>>>> dedd2ab8953559fe6520e22b91c4a9a29c09e77f

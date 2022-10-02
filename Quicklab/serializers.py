@@ -1,14 +1,13 @@
 from rest_framework import serializers
 from . import models
 
-<<<<<<< HEAD
 class TeacherSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Teacher
         fields=['first_name','last_name','username','password', 'email']
         
         
-class RegisterSerializer(serializers.ModelSerializer):
+class TeacherRegisterSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Student
         fields = ( 'first_name', 'last_name', 'username','email','password')
@@ -28,7 +27,6 @@ class LoginSerializer(serializers.Serializer):
 
 
 
-=======
 class StudentSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Student
@@ -47,4 +45,3 @@ def create(self, validated_data):
         student = models.Student.objects.create_Student(validated_data['username'], validated_data['password'],)
 
         return student
->>>>>>> dedd2ab8953559fe6520e22b91c4a9a29c09e77f
