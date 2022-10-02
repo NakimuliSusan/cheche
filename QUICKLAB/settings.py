@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'Quicklab',
     'rest_framework',
     'rest_framework.authtoken',
+    'knox'
 
 ]
 
