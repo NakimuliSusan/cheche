@@ -30,7 +30,7 @@ class Teacher (models.Model):
     student = models.ForeignKey("Student",on_delete=models.CASCADE,related_name='Teacher_student')
 
     def __str__(self):
-        return '{} {}'.format(self.first_name, self.last_name, self.username, self.email,self.student.first_name, self.student.last_name)
+        return '{} {}'.format(self.first_name, self.last_name, self.username, self.email,self.student.first_name, self.student.last_name,self.practicals.title)
  
 
 class Tool(models.Model):
