@@ -6,6 +6,13 @@ class TeacherSerializer(serializers.ModelSerializer):
         model = models.Teacher
         fields=['first_name','last_name','username','password', 'email']
         
+        
+class RegisterSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Student
+        fields = ( 'first_name', 'last_name', 'username','email','password')
+        extra_kwargs = {'password': {'write_only': True}}
+        
 
 class LoginSerializer(serializers.Serializer):
     # username = serializers.CharField()

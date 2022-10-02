@@ -144,3 +144,5 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAdminUser'
    ),
 }
+CSRF_TRUSTED_ORIGINS = ['http://*.merkl.it']
+

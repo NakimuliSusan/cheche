@@ -1,6 +1,9 @@
-from multiprocessing import context
+from rest_framework.authtoken.models import Token
 from django.shortcuts import render
+from requests import request
 from . import models
+from django.http import HttpResponse, JsonResponse
+from rest_framework.parsers import JSONParser
 from . import serializers
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
@@ -8,9 +11,11 @@ from django.http.response import JsonResponse
 from rest_framework.response import Response
 from knox.models import AuthToken
 from rest_framework import generics, permissions
-from django.contrib.auth import login
+from django.contrib.auth import login,authenticate
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from knox.views import LoginView as KnoxLoginView
+from django.contrib.auth.models import User
+from rest_framework.authtoken.views import ObtainAuthToken
 
 
 
@@ -42,6 +47,21 @@ def teacherApi(request,id=0):
         teacher=models.Teacher.objects.get(middle_name='middle_name')
         teacher.delete()
         return JsonResponse("Deleted successfully",safe=False)
+
+
+
+class RegisterAPI(generics.GenericAPIView):
+    serializer_class = serializers.RegisterSerializer
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        teacher = serializer.save()
+        User.objects.create_user(username=teacher.username , password=teacher.password)
+        return Response({
+        "teacher": serializers.TeacherSerializer(teacher, context=self.get_serializer_context()).data,
+        # "token": AuthToken.objects.create(student)[1]
+        })
+
     
     
 class LoginAPI(KnoxLoginView):
