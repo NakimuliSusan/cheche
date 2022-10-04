@@ -1,6 +1,9 @@
 import './App.css';
 import './login.css';
 import React, { useState, useEffect } from 'react';
+import { Link, useNavigate} from 'react-router-dom';
+import myimage from './Images/Group 76.png'
+
 
 function LoginForm() {
     const [userName, setUserName] = useState("");
@@ -17,6 +20,11 @@ function LoginForm() {
 
         <form onSubmit={handleSubmit} >
             <div className='container'>
+            <div className='image-container'>
+            <img src={myimage} alt="woman" width={450} />
+            </div>
+            <div className='form-container1'>
+            <h3 className='heading'>LogIn To Your Account</h3>
             <div class="username">
                 <input type="userName" name="userName" required placeholder='Username'
                     value={userName}
@@ -40,7 +48,8 @@ function LoginForm() {
             </div>
 
             <div class="signup">
-                <p>Don't have an account?  <span> Signup</span></p>
+                <p>Don't have an account? <span><Link style={{ color: '#00A9E5', textDecoration: 'inherit'}} to={'/'}>SignUp</Link></span></p>
+            </div>
             </div>
 
         </div>
