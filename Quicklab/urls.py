@@ -6,7 +6,7 @@ from knox import views as knox_views
 urlpatterns = [
     path('teachers/',views.teacherApi, name='teachers' ),
     path('login/', views.LoginAPI.as_view(), name='login'),
-    path('registerteacher/', views.RegisterAPI.as_view(), name='register'),
+    path('registerteacher/', views.TeacherRegisterAPI.as_view(), name='register'),
     path('students',views.studentApi,name='students'),
     path('register/',views.RegisterAPI.as_view(), name='register'),
     path('Quicklab/logout/', knox_views.LogoutView.as_view(), name='logout'),

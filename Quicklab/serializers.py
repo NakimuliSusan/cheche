@@ -9,7 +9,7 @@ class TeacherSerializer(serializers.ModelSerializer):
         
 class TeacherRegisterSerializer(serializers.ModelSerializer):
     class Meta:
-        model = models.Student
+        model = models.Teacher
         fields = ( 'first_name', 'last_name', 'username','email','password')
         extra_kwargs = {'password': {'write_only': True}}
         

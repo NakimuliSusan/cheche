@@ -5,7 +5,6 @@ from django.http import HttpResponse, JsonResponse
 from rest_framework.parsers import JSONParser
 from . import serializers
 from django.views.decorators.csrf import csrf_exempt
-from rest_framework.parsers import JSONParser
 from django.http.response import JsonResponse
 from rest_framework.response import Response
 from knox.models import AuthToken
@@ -49,7 +48,7 @@ def teacherApi(request,id=0):
 
 
 
-class RegisterAPI(generics.GenericAPIView):
+class TeacherRegisterAPI(generics.GenericAPIView):
     serializer_class = serializers.TeacherRegisterSerializer
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
@@ -110,6 +109,8 @@ def studentApi(request,id=0):
 # Register API
 class RegisterAPI(generics.GenericAPIView):
     serializer_class = serializers.RegisterSerializer
+    # permission_classes = (IsAuthenticated,) 
+    # authentication_classes = (TokenAuthentication,)
 
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
@@ -123,7 +124,7 @@ class RegisterAPI(generics.GenericAPIView):
 
 
 class LoginAPI(ObtainAuthToken):
-    permission_classes = (permissions.AllowAny,)
+    permission_classes = [permissions.AllowAny,]
 
     def post(self, request, format=None):
         username=request.data['username']
