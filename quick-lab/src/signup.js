@@ -61,18 +61,14 @@ function SignupForm() {
                 />
             </div>
 
-            <div class="confirm password">
+            <div class="confirmpassword">
                 <input type="confirm password" name="confirm password" required placeholder='Confirm password'
                     value={password}
                     onChange={(e) => { setPassword(e.target.value) }}
                 />
             </div>
 
-            <div class="forgot">
-                <p> Forgot password?</p>
-            </div>
-
-            <div class="loginbtn">
+            <div class="signupbtn">
                 <button type='submit'>SignUp</button>
             </div>
 

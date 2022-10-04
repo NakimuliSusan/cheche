@@ -1,0 +1,86 @@
+body{  
+    background-color: #FFFF;
+}
+
+.container{
+margin-left: 50%;
+}
+
+form{  
+    
+    background-color: #d7eefcdf; 
+    background-image: url(Images/Group\ 76.png);
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: 43%;
+        width: 68%; 
+        height: 400px;
+        margin-left:13%;  
+        margin-top: 5%;  
+        padding: 3rem 3rem;
+        border-radius: 10px;
+        box-shadow: 0 8px 18px 0 rgba(0, 0, 0, 0.2);
+    }
+.firstlines{    
+        display: flex;
+    }
+
+    .image{   
+     margin-top: -38%;   
+     margin-left: 56%;
+        }
+
+.password{    
+    margin-top: 4%;
+} 
+   .username input{   
+    margin-left: 3%;   
+    padding: 8px;   
+    width: 400px;   
+    color: #969797;
+    margin-top: 3%;
+    border-style: none;
+    border-radius: 2px;
+    box-shadow:  rgba(38, 37, 37, 0.2) 0px 2px 8px 0px;
+   }
+
+.password input{   
+    margin-top: 1%; 
+    margin-left: 3%;  
+    padding: 8px;   
+    width: 400px;
+    border-style: none;
+    border-radius: 2px;
+    box-shadow:  rgba(38, 37, 37, 0.2) 0px 2px 8px 0px;
+}
+.loginbtn{   
+     
+    margin-left: 13%; 
+    margin-top: 4%;
+}
+.loginbtn button{   
+     width: 350px;  
+     padding: 9px; 
+     color: white;  
+     background-color: #00A9E5; 
+     border: solid transparent;  
+     border-radius: 30px;  
+     font-size: 18px;
+     margin-top: 5%;
+    }
+.forgot{
+    color: #00A9E5;
+    margin-left: 60%;
+    margin-top: 2%;
+
+}
+
+.signup{
+    margin-top: 8%;
+    margin-left: 26%;
+    margin-bottom: -5%;
+}
+
+.signup span{
+    color: #00A9E5;
+}

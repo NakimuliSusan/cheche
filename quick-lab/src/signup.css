@@ -50,6 +50,7 @@ form{
     box-shadow: rgba(38, 37, 37, 0.2) 0px 2px 8px 0px;
     color: #969797;
     margin-top: -15%;
+    border-radius: 2px;
    }
 
    .lastname input{   
@@ -61,6 +62,7 @@ form{
     box-shadow: rgba(38, 37, 37, 0.2) 0px 2px 8px 0px;  
     color: #969797;
     margin-top: 3%;
+    border-radius: 2px;
    }   
 
    .username input{   
@@ -72,6 +74,7 @@ form{
     box-shadow: rgba(38, 37, 37, 0.2) 0px 2px 8px 0px;  
     color: #969797;
     margin-top: 3%;
+    border-radius: 2px;
    }
 
    .level input{   
@@ -82,10 +85,11 @@ form{
     box-shadow: rgba(38, 37, 37, 0.2) 0px 2px 8px 0px;   
     color: #969797;
     margin-top: 3%;
+    border-radius: 2px;
 
    }
 
-.email input{   
+.confirmpassword input{   
      margin-left: 6%;   
      padding: 6px;   
      width: 400px;
@@ -93,6 +97,7 @@ form{
      border-style: none; 
     box-shadow: rgba(38, 37, 37, 0.2) 0px 2px 8px 0px; 
      color: #969797;
+     border-radius: 2px;
     }
 
 .password input{    
@@ -102,21 +107,14 @@ form{
     border-radius:3px;  
     box-shadow: rgba(38, 37, 37, 0.2) 0px 2px 8px 0px;  
     width: 400px;
+    border-radius: 2px;
 }
-
-.forgot{   
-     margin-left: 69%;
-     margin-top: 2%;
-    }
-.forgot p{   
-     color: #00A9E5;
-    }
-.loginbtn{   
+.signupbtn{   
      
     margin-left: 13%; 
     margin-top: 4%;
 }
-.loginbtn button{   
+.signupbtn button{   
      width: 350px;  
      padding: 9px; 
      color: white;  
