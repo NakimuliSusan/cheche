@@ -1,0 +1,136 @@
+body{  
+    background-color: #FFFF;
+}
+
+.container{
+margin-left: 50%;
+}
+
+form{  
+    
+    background-color: #d7eefcdf; 
+    background-image: url(Images/Group\ 76.png);
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: 45%;
+        width: 68%; 
+        margin-left:11%;  
+        margin-top: 4%;  
+        padding: 4.5rem 4.6rem;
+        border-radius: 10px;
+        box-shadow: 0 8px 18px 0 rgba(0, 0, 0, 0.2);
+    }
+.firstlines{    
+        display: flex;
+    }
+
+.firstlines #signup{   
+     margin-left: 48%;   
+     margin-top: 2%;   
+     color: #00A9E5;
+     font-size: 25px;
+     font-weight: bolder;
+    }
+
+    .image{   
+     margin-top: -38%;   
+     margin-left: 56%;
+        }
+
+.password{    
+    margin-top: 4%;
+} 
+
+.firstname input{   
+    margin-left: 6%;   
+    padding: 6px;   
+    width: 400px;
+    border-radius:3px;  
+    border-style: none; 
+    box-shadow: rgba(38, 37, 37, 0.2) 0px 2px 8px 0px;
+    color: #969797;
+    margin-top: -15%;
+   }
+
+   .lastname input{   
+    margin-left: 6%;   
+    padding: 6px;   
+    width: 400px; 
+    border-radius:3px;  
+    border-style: none; 
+    box-shadow: rgba(38, 37, 37, 0.2) 0px 2px 8px 0px;  
+    color: #969797;
+    margin-top: 3%;
+   }   
+
+   .username input{   
+    margin-left: 6%;   
+    padding: 6px;   
+    width: 400px; 
+    border-radius:3px;  
+    border-style: none; 
+    box-shadow: rgba(38, 37, 37, 0.2) 0px 2px 8px 0px;  
+    color: #969797;
+    margin-top: 3%;
+   }
+
+   .level input{   
+    margin-left: 6%;   
+    padding: 6px;   
+    width: 400px;
+    border-style: none; 
+    box-shadow: rgba(38, 37, 37, 0.2) 0px 2px 8px 0px;   
+    color: #969797;
+    margin-top: 3%;
+
+   }
+
+.email input{   
+     margin-left: 6%;   
+     padding: 6px;   
+     width: 400px;
+     border-radius:3px;  
+     border-style: none; 
+    box-shadow: rgba(38, 37, 37, 0.2) 0px 2px 8px 0px; 
+     color: #969797;
+    }
+
+.password input{    
+    margin-left: 6%;  
+    padding: 6px; 
+    border-style: none; 
+    border-radius:3px;  
+    box-shadow: rgba(38, 37, 37, 0.2) 0px 2px 8px 0px;  
+    width: 400px;
+}
+
+.forgot{   
+     margin-left: 69%;
+     margin-top: 2%;
+    }
+.forgot p{   
+     color: #00A9E5;
+    }
+.loginbtn{   
+     
+    margin-left: 13%; 
+    margin-top: 4%;
+}
+.loginbtn button{   
+     width: 350px;  
+     padding: 9px; 
+     color: white;  
+     background-color: #00A9E5; 
+     border: solid transparent;  
+     border-radius: 30px;  
+     font-size: 18px;
+    }
+.login{
+    margin-top: 4%;
+    margin-left: 26%;
+    margin-bottom: -5%;
+}
+
+.login span{
+    color: #00A9E5;
+}
