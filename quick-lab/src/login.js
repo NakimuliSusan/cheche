@@ -3,6 +3,9 @@ import './login.css';
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate} from 'react-router-dom';
 import myimage from './Images/Group 76.png'
+import { BsPersonFill } from "react-icons/bs";
+import { FaLock } from "react-icons/fa";
+
 
 
 function LoginForm() {
@@ -25,18 +28,28 @@ function LoginForm() {
             </div>
             <div className='form-container1'>
             <h3 className='heading'>LogIn To Your Account</h3>
-            <div class="username">
-                <input type="userName" name="userName" required placeholder='Username'
+            <div class="username1">
+                <div className='icons'>
+                <BsPersonFill/>
+                </div>
+                <div className='username' >
+                <input type="name" name="name" required placeholder='Username'
                     value={userName}
                     onChange={(e) => { setUserName(e.target.value) }}
                 />
+                </div>
             </div>
 
             <div class="password">
+            <div className='icons'>
+                <FaLock/>
+                </div>
+                <div class="password">
                 <input type="password" name="password" required placeholder='Password'
                     value={password}
                     onChange={(e) => { setPassword(e.target.value) }}
                 />
+                </div>
             </div>
 
             <div class="forgot">

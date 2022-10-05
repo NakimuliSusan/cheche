@@ -5,16 +5,20 @@
     margin-left: 5%;
     margin-top:5%;
  }
- .username input{   
+ .name input{   
     margin-left: 3%;   
-    padding: 12px;   
-    width: 400px;   
-    color: #969797;
+    padding: 20px;   
+    width: 350px;   
+    color: #ffffff;
     margin-top: 3%;
     border-style: none;
     border-radius: 2px;
     box-shadow:  rgba(38, 37, 37, 0.2) 0px 2px 8px 0px;
    }
+.username input:focus{
+    outline: none;
+    box-shadow: none;
+}
 
 .password input{   
     margin-top: 5%; 
@@ -24,6 +28,10 @@
     border-style: none;
     border-radius: 2px;
     box-shadow:  rgba(38, 37, 37, 0.2) 0px 2px 8px 0px;
+}
+.password input:focus{
+    outline: none;
+    box-shadow: none;
 }
 .loginbtn{   
      
