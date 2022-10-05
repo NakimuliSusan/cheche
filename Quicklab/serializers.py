@@ -1,4 +1,6 @@
 from rest_framework import serializers
+from django.contrib.auth.models import User
+
 from . import models
 
 class TeacherSerializer(serializers.ModelSerializer):
@@ -10,20 +12,12 @@ class TeacherSerializer(serializers.ModelSerializer):
 class TeacherRegisterSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Teacher
-        fields = ( 'first_name', 'last_name', 'username','email','password')
+        fields = ( 'first_name', 'last_name', 'username','password','email')
         extra_kwargs = {'password': {'write_only': True}}
         
-
-class LoginSerializer(serializers.Serializer):
-    # username = serializers.CharField()
-    # password = serializers.CharField()
-
-    class Meta:
-        model = models.Teacher
-        fields = ('username', 'password')
-    def create(self, validated_data):
-        teacher = models.Teacher.objects.create_user(validated_data['username'], validated_data['password'])
-        return teacher
+def create(self, validated_data):
+        user = models.Teacher.objects.create(validated_data['username'], validated_data['password'],)
+        return user
 
 
 
@@ -39,9 +33,6 @@ class RegisterSerializer(serializers.ModelSerializer):
         model = models.Student
         fields = ( 'first_name', 'last_name', 'username','password','level')
         extra_kwargs = {'password': {'write_only': True}}
-
-
 def create(self, validated_data):
-        student = models.Student.objects.create_Student(validated_data['username'], validated_data['password'],)
-
-        return student
+        user = models.Student.objects.create(validated_data['username'], validated_data['password'],)
+        return user
