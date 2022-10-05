@@ -1,5 +1,5 @@
+from email.policy import default
 from django.db import models
-from traitlets import default
 
 # Create your models here.
 class Student(models.Model):
@@ -19,6 +19,21 @@ class Student(models.Model):
         return '{} {}'.format(self.first_name, self.last_name, self.username, self.password)
  
 
+
+class Teacher (models.Model):
+    first_name=models.CharField(max_length=20)
+    last_name=models.CharField(max_length=20)
+    username=models.CharField(max_length=20)
+    email=models.EmailField(max_length=20)
+    password=models.CharField(max_length=8)
+    practicals = models.ForeignKey("Practical", on_delete=models.CASCADE, related_name="Teacher_practical", null=True)
+    student = models.ForeignKey("Student",on_delete=models.CASCADE,related_name='Teacher_student', null=True )
+
+    def __str__(self):
+        return '{} {}'.format(self.first_name, self.last_name, self.username, self.email,self.student.first_name, self.student.last_name,self.practicals.title)
+#  self.student.first_name, self.student.last_name,self.practicals.title
+ 
+
 class Tool(models.Model):
     label = models.CharField(max_length=255, blank=True)
     image = models.ImageField()
@@ -28,7 +43,6 @@ class Tool(models.Model):
            ("Chemistry", "Chemistry"),
     )
     subject = models. CharField(max_length=20, choices=SUBJECTS)
-    
 
 
 class Practical(models.Model):
@@ -60,24 +74,8 @@ class Practical(models.Model):
     observation = models.TextField(max_length=255, blank=True, null=True)
     time_date = models.DateTimeField(auto_now_add=True)
     comment_description = models.TextField(max_length=255, blank=True, null=True)
-    tools = models.ForeignKey(Tool, on_delete=models.CASCADE,related_name='Tools')
-    def __str__(self):
-        return '{} {}'.format(self.status, self.comments, self.tools.label, self.time_date,self.level)
- 
+    tools = models.ForeignKey(Tool, on_delete=models.CASCADE,related_name='Tool_practical')
 
-
-class Teacher (models.Model):
-    first_name=models.CharField(max_length=20)
-    last_name=models.CharField(max_length=20)
-    username=models.CharField(max_length=20)
-    email=models.EmailField(max_length=20)
-    password=models.CharField(max_length=8)
-    # practicals = models.ForeignKey("Practicals",on_delete=models.CASCADE,related_name='practicals')
-#     student = models.ForeignKey("Student",on_delete=models.CASCADE,related_name='Teacher_student')
-
-    def __str__(self):
-        return '{} {}'.format(self.first_name, self.last_name, self.username, self.email)
- 
 
 
 
