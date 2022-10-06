@@ -21,10 +21,10 @@ function SignupForm() {
     const [confirmPassword, setConfirmPassword] = useState("");
 
     const formSchema = yup.object().shape({
-        firstName: yup.string().min(12).required(),
-        lastName: yup.string().required(),
+        firstName: yup.string().required('First name is required'),
+        lastName: yup.string().required('Last name is required'),
         UserName: yup.string().required(),
-        level: yup.string().required(),
+        level: yup.string().required('enter level'),
         password: yup.string().min(8).max(15).required(),
         confirmPassword: yup.string().oneOf([yup.ref("password"), null]),
       })
@@ -34,11 +34,19 @@ const { register, handleSubmit, formState: { errors }, reset } = useForm({
         resolver: yupResolver(formSchema),
       });
      
-const onSubmitHandler = (e) => {
-       e.preventDefault();
+const onSubmitHandler = () => {
+    //    e.preventDefault();
        navigate("/login")
        reset();
     }
+// const submitting=()=>{
+//     if(!errors){
+//         navigate("/login")
+
+//     }
+// }
+
+    // onClick={() => {navigate('/login');}}
      
     return (
 
@@ -128,7 +136,7 @@ const onSubmitHandler = (e) => {
             
 
             <div class="signupbtn">
-                <button type='submit'>SignUp</button>
+            <button onClick={ !errors &&  navigate("/login")} type="submit">SignUp</button>
             </div>
 
             <div class="login">
