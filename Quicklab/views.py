@@ -106,5 +106,6 @@ class LoginAPI(ObtainAuthToken):
         print(user)
         token=Token.objects.create(user=user)
         return Response({
+            'body': 'login successful',
             "token": token.key
         })
