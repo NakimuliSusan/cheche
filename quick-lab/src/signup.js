@@ -9,24 +9,46 @@ import { BsPersonFill } from "react-icons/bs";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as yup from 'yup';
+import axios from "axios";
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+toast.configure()
+
+
 
 
 function SignupForm() {
     const navigate = useNavigate()
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
-    const [UserName, setUserName] = useState("");
-    const [level, setLevel] = useState("");
-    const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
+
+    
+    const [user,setUser] = useState({
+        first_name:"",
+        last_name:"",
+        username: "",
+        password:"",
+        level:""
+        
+
+    })
+
+    const handleChange = e =>{
+        const {name,value} = e.target
+        setUser({
+        ...user,//spread operator 
+        [name]:value
+    
+        })
+        }
+
 
     const formSchema = yup.object().shape({
-        firstName: yup.string().required('First name is required'),
-        lastName: yup.string().required('Last name is required'),
-        UserName: yup.string().required(),
-        level: yup.string().required('enter level'),
+        first_name: yup.string().required(),
+        last_name: yup.string().required(),
+        username: yup.string().required(),
+        level: yup.string().required(),
         password: yup.string().min(8).max(15).required(),
-        confirmPassword: yup.string().oneOf([yup.ref("password"), null]),
+        confirmPassword: yup.string().required().oneOf([yup.ref('password'), null])
+
       })
 
 
@@ -34,23 +56,38 @@ const { register, handleSubmit, formState: { errors }, reset } = useForm({
         resolver: yupResolver(formSchema),
       });
      
-const onSubmitHandler = () => {
+const onSubmitHandler = (e) => {
+    
     //    e.preventDefault();
-       navigate("/login")
-       reset();
+    //    navigate("/login")
     }
-// const submitting=()=>{
-//     if(!errors){
-//         navigate("/login")
+const submitting=()=>{
+    const {first_name,last_name,username,password,level,} = user
+    if (first_name && last_name && username && level && password){
+     axios.post("http://127.0.0.1:8000/Quicklab/register/",user )
+.then(res=>{
+        console.log(res)
+        reset();
+        toast('You have successfully been registered to Quick lab, Login to continue' )
+        navigate("/login")
 
-//     }
-// }
+    
+    })
+    .catch(error=>{
+        console.log(error)
+        toast('Unable to register, to try again')
 
-    // onClick={() => {navigate('/login');}}
+    })
+    }
+    else{
+        console.log(user)
+     alert("invalid input")
+    };
+}
      
     return (
 
-        <form onSubmit={handleSubmit(onSubmitHandler)} >
+            <form onSubmit={handleSubmit(onSubmitHandler)} >
             <div className='container'>
             <div className='image-container'>
             <img src={myimage} alt="woman" width={450} />
@@ -62,10 +99,10 @@ const onSubmitHandler = () => {
                    <BsPersonFill/>
                 </div>
                 <div class="firstname">
-                <input type="firstName" name="firstname" required placeholder='First Name'
-                        {...register("firstName")}
-                    onChange={(e) => {setFirstName(e.target.value) }}    
-                />
+                <input type="first_name" name="first_name" required placeholder='First Name'
+                        {...register("first_name")}
+                        onChange={handleChange}               
+                         />
                 {errors.firstName?.message}
                 </div>  
             </div>
@@ -75,10 +112,10 @@ const onSubmitHandler = () => {
                    <BsPersonFill/>
                 </div>
                 <div className='lastname'>
-                <input type="lastName" name="lastname" required placeholder='Last Name'
-                       {...register("lastName")}
-                    onChange={(e) => {setLastName(e.target.value) }}
-                />
+                <input type="last_name" name="last_name" required placeholder='Last Name'
+                       {...register("last_name")}
+                       onChange={handleChange}               
+                       />
                 <i>{errors.lastName?.message}</i>
                 </div>
             </div>
@@ -88,10 +125,10 @@ const onSubmitHandler = () => {
                    <BsPersonFill/>
                 </div>
             <div className="username-1">
-                <input  type="userName" name="userName" required placeholder='UserName'
-                       {...register("UserName")}
-                    onChange={(e) => { setUserName(e.target.value) }}
-                />
+                <input  type="username" name="username" required placeholder='UserName'
+                       {...register("username")}
+                       onChange={handleChange}               
+                       />
                 {errors.UserName?.message}
                 </div>
             </div>
@@ -100,23 +137,23 @@ const onSubmitHandler = () => {
                    <AiFillLayout/>
                 </div>
                 <div className='level'>
-                <input  type="level" name="level" required placeholder='Level'
+                <input  type="text" name="level" required placeholder='Level'
                       {...register("level")}
-                    onChange={(e) => { setLevel(e.target.value) }}
-                />
+                      onChange={handleChange}               
+                      />
                 {errors.level?.message}
                 </div>
             </div>
 
-            <div class="password">
+            <div class="password-1">
              <div className='icons'>
              <FaLock />
             </div>  
             <div class="password-1"> 
                <input type="password" name="password"  required  placeholder=' Password'
                        {...register("password")}
-                    onChange={(e) => {setPassword(e.target.value) }}
-                />
+                       onChange={handleChange}               
+                       />
                  <i>{errors.password?.message}</i>
                 </div>
             </div>
@@ -127,16 +164,16 @@ const onSubmitHandler = () => {
             </div> 
             < div className="confirmpassword">
                 <input  type="password" name="confirm password" required placeholder='Confirm password'
-                      value={confirmPassword}
-                    onChange={(e) => {setConfirmPassword(e.target.value) }}
-                />
+                      {...register("confirmpassword")}
+                      onChange={handleChange}               
+                      />
                 </div>
                 {errors.confirmPassword}
             </div>
             
 
             <div class="signupbtn">
-            <button onClick={ !errors &&  navigate("/login")} type="submit">SignUp</button>
+                <button type='submit' onClick={submitting} >SignUp</button>
             </div>
 
             <div class="login">
