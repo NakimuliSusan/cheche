@@ -42,7 +42,7 @@ const onSubmitHandler = (e) => {
      
     return (
 
-        <form onSubmit={handleSubmit(onSubmitHandler)} >
+            <form onSubmit={handleSubmit(onSubmitHandler)} >
             <div className='container'>
             <div className='image-container'>
             <img src={myimage} alt="woman" width={450} />
@@ -54,7 +54,7 @@ const onSubmitHandler = (e) => {
                    <BsPersonFill/>
                 </div>
                 <div class="firstname">
-                <input type="firstName" name="firstname" required placeholder='First Name'
+                <input type="text" name="firstname" required placeholder='First Name'
                         {...register("firstName")}
                     onChange={(e) => {setFirstName(e.target.value) }}    
                 />
@@ -67,7 +67,7 @@ const onSubmitHandler = (e) => {
                    <BsPersonFill/>
                 </div>
                 <div className='lastname'>
-                <input type="lastName" name="lastname" required placeholder='Last Name'
+                <input type="text" name="lastname" required placeholder='Last Name'
                        {...register("lastName")}
                     onChange={(e) => {setLastName(e.target.value) }}
                 />
@@ -80,7 +80,7 @@ const onSubmitHandler = (e) => {
                    <BsPersonFill/>
                 </div>
             <div className="username-1">
-                <input  type="userName" name="userName" required placeholder='UserName'
+                <input  type="text" name="userName" required placeholder='UserName'
                        {...register("UserName")}
                     onChange={(e) => { setUserName(e.target.value) }}
                 />
@@ -92,7 +92,7 @@ const onSubmitHandler = (e) => {
                    <AiFillLayout/>
                 </div>
                 <div className='level'>
-                <input  type="level" name="level" required placeholder='Level'
+                <input  type="text" name="level" required placeholder='Level'
                       {...register("level")}
                     onChange={(e) => { setLevel(e.target.value) }}
                 />
@@ -100,7 +100,7 @@ const onSubmitHandler = (e) => {
                 </div>
             </div>
 
-            <div class="password">
+            <div class="password-1">
              <div className='icons'>
              <FaLock />
             </div>  

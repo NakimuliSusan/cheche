@@ -189,9 +189,11 @@ body{
 .firstname-1 .icons{
     color: #00A9E5;
     font-size:18px; 
+    
+    
 }
 .firstname input{   
-    margin-left: 3%;   
+    margin-left: 8%;   
     padding: 10px;   
     width: 400px;
     border-radius:3px;  
@@ -211,18 +213,18 @@ body{
 }
 .lastname-1 .icons{
     color: #00A9E5;
-    margin-top:8%;
+    margin-top:7%;
     font-size:18px;
 }
 .lastname input{   
-    margin-left: 3%;   
+    margin-left: 8%;   
     padding: 10px;   
     width: 400px; 
     border-radius:3px;  
     border-style: none; 
     box-shadow: rgba(38, 37, 37, 0.2) 0px 2px 8px 0px;  
     color: #969797;
-    margin-top: 3%;
+    margin-top: 3.5%;
     border-radius: 2px;
    }   
 .lastname input:focus{
@@ -235,19 +237,19 @@ body{
 }
 .username1 .icons{
     color: #00A9E5;
-    margin-top:6%;
+    margin-top:7%;
     font-size:18px;
 }
 
 .username1 input{   
-    margin-left:3%;   
-    padding: 12px;   
-    width: 400px; 
+    margin-left: 8%;   
+    padding: 10px;   
+    width: 400px;
     border-radius:3px;  
     border-style: none; 
-    box-shadow: rgba(38, 37, 37, 0.2) 0px 2px 8px 0px;  
+    box-shadow: rgba(38, 37, 37, 0.2) 0px 2px 8px 0px;
     color: #969797;
-    margin-top: 3%;
+    margin-top: 4%;
     border-radius: 2px;
    }
 .username-1 input:focus{
@@ -260,16 +262,16 @@ body{
 }
 .level-1 .icons{
     color: #00A9E5;
-    margin-top:6%; 
+    margin-top:8%; 
 }
 .level input{   
-    margin-left: 3%;   
+    margin-left: 8.5%;   
     padding: 10px;   
     width: 400px;
     border-style: none; 
     box-shadow: rgba(38, 37, 37, 0.2) 0px 2px 8px 0px;   
     color: #969797;
-    margin-top: 3%;
+    margin-top: 4%;
     /* margin-bottom:3%; */
     border-radius: 2px;
 
@@ -280,13 +282,14 @@ body{
 }
 
 .confirmpassword input{   
-     margin-left: 3%;   
+     margin-left: 8.2%;   
      padding: 10px;   
      width: 400px;
      border-radius:3px;  
      border-style: none; 
      box-shadow: rgba(38, 37, 37, 0.2) 0px 2px 8px 0px; 
      color: #969797;
+     margin-top: 3.5%;
      border-radius: 2px;
     }
 .confirmpassword-1{
@@ -295,33 +298,34 @@ body{
 }
 .confirmpassword-1 .icons{
     color: #00A9E5;
-    margin-top:3%;
+    margin-top:7%;
 }
 
 .confirmpassword input:focus{
     outline: none;
     box-shadow: none;
 }
-.password{
+.password-1{
     display:flex;
     flex: 1;
    
 }
 
-.password .icons{
+.password-1 .icons{
     color: #00A9E5;
-    margin-top:10%;
+    margin-top:7%;
     font-size:15px;
 }
 
 .password-1 input{   
-    margin-left: 3%; 
-    margin-bottom:3%; 
-    padding: 8px; 
+    margin-left: 7.8%; 
+    margin-top:3.6%; 
+    padding: 9px; 
     border-style: none; 
-    border-radius:3px;  
+    border-radius:2px;  
     box-shadow: rgba(38, 37, 37, 0.2) 0px 2px 8px 0px;  
-    width: 400px;
+    width: 438px;
+    height: 16px;
     border-radius: 2px;
 }
 
@@ -331,13 +335,14 @@ body{
 }
 .signupbtn{   
      
-    margin-left: 13%; 
-    margin-top: 4%;
+    margin-left: 22%; 
+    margin-top: 5%;
 }
 .signupbtn button{   
      width: 350px;  
      padding: 10px; 
-     margin-top:3%;
+     margin-top:6%;
+     margin-left: 7%;
      color: white;  
      background-color: #00A9E5; 
      border: solid transparent;  
@@ -345,21 +350,23 @@ body{
      font-size: 18px;
     }
 .login{
-    margin-top: 4%;
-    margin-left: 23%;
+    text-align: right;
+    margin-top: 5%;
+    margin-right:-14%;
     margin-bottom: -5%;
 }
 
 .login span Link{
     color: #00A9E5;
+    margin-right: 5%;
 }
 .headings{
     /* margin-top:-8%; */
     font-size:25px;
-     text-align: center;
+     text-align: right;
      color: #00A9E5;
      margin-top:5%;
-     margin-left:10%;
+     margin-right:-10%;
      /* font-family:sans-serif; */
 }
 
