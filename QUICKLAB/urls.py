@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.authtoken import views
+import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -23,4 +24,4 @@ urlpatterns = [
     path('api-token-auth', views.obtain_auth_token),
 
 
-]
+]+ static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
