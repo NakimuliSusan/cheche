@@ -20,6 +20,7 @@ toast.configure()
 function SignupForm() {
     const navigate = useNavigate()
 
+    
     const [user,setUser] = useState({
         first_name:"",
         last_name:"",
