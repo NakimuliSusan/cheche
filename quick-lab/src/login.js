@@ -91,7 +91,7 @@ const onSubmitHandler = () => {
                  <i>{errors.username?.message}</i>
                 </div>
             </div>
-            <div class="password">
+            <div class="password-1">
             <div className='icons'>
                 <FaLock/>
                 </div>
