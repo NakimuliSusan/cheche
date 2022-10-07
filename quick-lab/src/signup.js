@@ -36,15 +36,8 @@ function SignupForm() {
         }
 
 
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
-    const [UserName, setUserName] = useState("");
-    const [levell, setLevel] = useState("");
-    const [passwordd, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
-
     const formSchema = yup.object().shape({
-        first_name: yup.string().min(12).required(),
+        first_name: yup.string().required(),
         last_name: yup.string().required(),
         username: yup.string().required(),
         level: yup.string().required(),
