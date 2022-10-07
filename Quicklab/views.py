@@ -5,7 +5,6 @@ from django.http import HttpResponse, JsonResponse
 from rest_framework.parsers import JSONParser
 from . import serializers
 from django.views.decorators.csrf import csrf_exempt
-from rest_framework.parsers import JSONParser
 from django.http.response import JsonResponse
 from rest_framework.response import Response
 from knox.models import AuthToken
@@ -48,8 +47,7 @@ def teacherApi(request,id=0):
         return JsonResponse("Deleted successfully",safe=False)
 
 
-
-class RegisterAPI(generics.GenericAPIView):
+class TeacherRegisterAPI(generics.GenericAPIView):
     serializer_class = serializers.TeacherRegisterSerializer
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
@@ -59,26 +57,6 @@ class RegisterAPI(generics.GenericAPIView):
         return Response({
         "teacher": serializers.TeacherSerializer(teacher, context=self.get_serializer_context()).data,
         # "token": AuthToken.objects.create(student)[1]
-        })
-
-    
-    
-class LoginAPI(KnoxLoginView):
-    serializer_class = serializers.LoginSerializer
-    # permission_classes = (permissions.AllowAny,)
-
-
-
-    def post(self, request, format=None):
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        
-        teacher = serializer.validated_data
-        token=AuthToken.objects.create(teacher)[1]
-        
-        return Response({
-            'teacher':serializers.TeacherSerializer(teacher, context=self.get_serializer_context()).data,
-            'token':token
         })
 
 @csrf_exempt
@@ -110,7 +88,6 @@ def studentApi(request,id=0):
 # Register API
 class RegisterAPI(generics.GenericAPIView):
     serializer_class = serializers.RegisterSerializer
-
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -120,24 +97,15 @@ class RegisterAPI(generics.GenericAPIView):
         "student": serializers.StudentSerializer(student, context=self.get_serializer_context()).data,
         # "token": AuthToken.objects.create(student)[1]
         })
-
-
 class LoginAPI(ObtainAuthToken):
     permission_classes = (permissions.AllowAny,)
-
     def post(self, request, format=None):
         username=request.data['username']
         password=request.data['password']
         user=authenticate(request,username=username, password=password)
         print(user)
-
         token=Token.objects.create(user=user)
         return Response({
+            'body': 'login successful',
             "token": token.key
         })
-
-        # serializer = AuthTokenSerializer(data=request.data)
-        # serializer.is_valid(raise_exception=True)
-        # student = serializer.validated_data['student']
-        # login(request, student)
-        # return super(LoginAPI, self).post(request, format=None)
