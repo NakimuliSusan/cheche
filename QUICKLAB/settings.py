@@ -94,16 +94,16 @@ DATABASES = {
 db_from_env = dj_database_url.config(conn_max_age=600)
 DATABASES['default'].update(db_from_env)
 
-DATABASE = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Quicklab',
-        'USER': 'Cheche',
-        'PASSWORD':'user',
-        'HOST': 'localhost',
-        'PORT': 5432,
-    }
-}
+# DATABASE = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'Quicklab',
+#         'USER': 'Cheche',
+#         'PASSWORD':'user',
+#         'HOST': 'localhost',
+#         'PORT': 5432,
+#     }
+# }
 
 
 # Password validation
