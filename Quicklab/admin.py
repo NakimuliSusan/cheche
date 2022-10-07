@@ -9,7 +9,7 @@ class StudentAdmin(admin.ModelAdmin):
 admin.site.register(models.Student, StudentAdmin)
 
 class TeacherAdmin(admin.ModelAdmin):
-     list_display = ('first_name', 'last_name', 'username', 'email','student') 
+     list_display = ('first_name', 'last_name', 'username', 'email') 
      search_fields = ('first_name', 'last_name')
 admin.site.register(models.Teacher, TeacherAdmin)
 
@@ -18,10 +18,9 @@ class PracticalAdmin(admin.ModelAdmin):
      search_fields = ('description', 'status', 'comments')
 admin.site.register(models.Practical, PracticalAdmin)
 
-
-class ToolAdmin(admin.ModelAdmin):
+class ToolsAdmin(admin.ModelAdmin):
      list_display = ('label', 'subject', 'image') 
      search_fields = ('label', 'subject', 'image')
-admin.site.register(models.Tool, ToolAdmin)
+admin.site.register(models.Tool, ToolsAdmin)
 
 
