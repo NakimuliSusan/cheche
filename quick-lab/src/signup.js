@@ -10,6 +10,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as yup from 'yup';
 import axios from "axios";
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+toast.configure()
+
 
 
 
@@ -54,16 +58,25 @@ const { register, handleSubmit, formState: { errors }, reset } = useForm({
 const onSubmitHandler = (e) => {
     
     //    e.preventDefault();
-       navigate("/login")
-       reset();
+    //    navigate("/login")
     }
 const submitting=()=>{
     const {first_name,last_name,username,password,level,} = user
     if (first_name && last_name && username && level && password){
      axios.post("http://127.0.0.1:8000/Quicklab/register/",user )
-    .then(res=>console.log(res))
-    navigate("/login")
-    reset();
+.then(res=>{
+        console.log(res)
+        reset();
+        toast('You have successfully been registered to Quick lab, Login to continue' )
+        navigate("/login")
+
+    
+    })
+    .catch(error=>{
+        console.log(error)
+        toast('Unable to register, to try again')
+
+    })
     }
     else{
         console.log(user)
