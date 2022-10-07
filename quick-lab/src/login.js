@@ -9,8 +9,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as yup from 'yup';
 import axios from "axios";
-import toast, {Toaster} from 'react-hot-toast'
+import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+toast.configure()
+
+
 
 
 
@@ -51,12 +54,20 @@ const onSubmitHandler = () => {
         if (username && password){
          axios.post("http://127.0.0.1:8000/Quicklab/login/",user )
         .then(res=>{
-            console.log(res.data.body)
-           toast.notify(res.data.body)
+            console.log(res.data)
+                    reset();
+                    notify()
+
+
+        })
+        .catch(error=>{
+            console.log(error)
+            reset();
+
+            
+            toast('unable to login, make sure your username and password are correct')
         })
         // navigate("/login")
-        // notify()
-        reset();
         }
         else{
             console.log(user)
@@ -64,11 +75,10 @@ const onSubmitHandler = () => {
         };
     }
 
-    const notify = () =>
-    toast.success("Logged in Successfully.", {
-      position: toast.POSITION.TOP_CENTER,
-      autoClose: 3000,
-    });
+    const notify = () =>{
+        toast("Login successfull")
+     
+    };
 
 
     return (
