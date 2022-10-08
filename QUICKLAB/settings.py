@@ -11,8 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
-import dj_database_url
-import os
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,11 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-h3)d8z^kxy(&i+8bh-np7lz*k4994uk3j5gg2^!c^g$2wr)kjc'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = [
-    '0.0.0.0', 'localhost', '127.0.0.1','quicklabbz.herokuapp.com'
-]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -45,8 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'knox',
-    'whitenoise.runserver_nostatic' ,
-
+    
 ]
 
 MIDDLEWARE = [
@@ -85,25 +81,17 @@ WSGI_APPLICATION = 'QUICKLAB.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
+
+DATABASE = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'Quicklab',
+        'USER': 'Cheche',
+        'PASSWORD':'user',
+        'HOST': 'localhost',
+        'PORT': 5432,
     }
 }
-db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES['default'].update(db_from_env)
-
-# DATABASE = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'Quicklab',
-#         'USER': 'Cheche',
-#         'PASSWORD':'user',
-#         'HOST': 'localhost',
-#         'PORT': 5432,
-#     }
-# }
 
 
 # Password validation
@@ -144,12 +132,6 @@ STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
-STATIC_ROOT = os.path.join(BASE_DIR,'static')
-STATICFILES_DIRS = [os.path.join(BASE_DIR,'project_name/static')
-]
-
-MEDIA_ROOT = os.path.join(BASE_DIR,'media')
-MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
