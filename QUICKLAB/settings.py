@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
-import dj_database_url
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -23,11 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-h3)d8z^kxy(&i+8bh-np7lz*k4994uk3j5gg2^!c^g$2wr)kjc'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = [
-    '0.0.0.0', 'localhost', '127.0.0.1','quicklabbz.herokuapp.com'
-]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -42,12 +40,7 @@ INSTALLED_APPS = [
     'Quicklab',
     'rest_framework',
     'rest_framework.authtoken',
-<<<<<<< HEAD
     'api'
-=======
-    'knox',
-    'whitenoise.runserver_nostatic' ,
->>>>>>> Dev
 
 ]
 
@@ -59,9 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 ROOT_URLCONF = 'QUICKLAB.urls'
 
@@ -93,9 +84,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES['default'].update(db_from_env)
-
 DATABASE = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -146,12 +134,6 @@ STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
-STATIC_ROOT = os.path.join(BASE_DIR,'static')
-STATICFILES_DIRS = [os.path.join(BASE_DIR,'project_name/static')
-]
-
-MEDIA_ROOT = os.path.join(BASE_DIR,'media')
-MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
