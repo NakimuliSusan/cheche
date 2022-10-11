@@ -60,6 +60,34 @@ class TeacherRegisterAPI(generics.GenericAPIView):
         })
 
 @csrf_exempt
+def practicalApi(request,id=0):
+    if request.method=='GET':
+        practicals = models.Practical.objects.all()
+        practical_serializer = serializers.PracticalSerializer(practicals,many=True)
+        return JsonResponse(practical_serializer.data,safe=False)
+    elif request.method=='POST':
+        practical_data = JSONParser().parse(request)
+        practical_serializer = serializers.PracticalSerializer(data=practical_data)
+        if practical_serializer.is_valid():
+            practical_serializer.save()
+            return JsonResponse("Added Successfully",safe=False)
+        return JsonResponse("Failed to add",safe=False)
+    elif request.method=='PUT':
+        practical_data=JSONParser().parse(request)
+        practical = models.Practical.objects.get(middle_name = practical_data['middle_name'])
+        practical_serializer=serializers.PracticalSerializer(practical,data=practical_data)
+        if practical_serializer.is_valid():
+            practical_serializer.save()
+            return JsonResponse("Updated Successfully",safe=False)
+        return JsonResponse("Failed to update",safe=False)
+    elif request.method=='DELETE':
+        practical=models.Practical.objects.get(middle_name='middle_name')
+        practical.delete()
+        return JsonResponse("Deleted successfully",safe=False)
+
+
+
+@csrf_exempt
 def studentApi(request,id=0):
     if request.method=='GET':
         students = models.Student.objects.all()
@@ -109,3 +137,4 @@ class LoginAPI(ObtainAuthToken):
             'body': 'login successful',
             "token": token.key
         })
+

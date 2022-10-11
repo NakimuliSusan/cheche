@@ -41,4 +41,9 @@ def create(self, validated_data):
 class PracticalSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Practical
-        fields = ('description','image','instructions','title','subject','level','status', 'comments','tools','comment_description')
+        fields=['title','description','imwhereage','instructions', 'subject']
+
+
+
+
+
