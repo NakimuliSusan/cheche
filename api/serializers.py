@@ -36,3 +36,9 @@ class RegisterSerializer(serializers.ModelSerializer):
 def create(self, validated_data):
         user = models.Student.objects.create(validated_data['username'], validated_data['password'],)
         return user
+
+#Practical Serializer
+class PracticalSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Practical
+        fields = ('description','image','instructions','title','subject','level','status', 'comments','tools','comment_description')
