@@ -139,8 +139,8 @@ class LoginAPI(ObtainAuthToken):
             "token": token.key
         })
 
-class practicalApi(generics.GenericAPIView):
-    serializer_class = serializers.PracticalSerializer
-    def get(self, request, *args, **kwargs):
-       queryset = models.Practical.objects.all()
-       serializer_class = serializers.PracticalSerializer
+# class PracticalAPI(generics.GenericAPIView):
+#     serializer_class = serializers.PracticalSerializer
+#     def get(self, request, *args, **kwargs):
+#        queryset = models.Practical.objects.all()
+#        serializer_class = serializers.PracticalSerializer
