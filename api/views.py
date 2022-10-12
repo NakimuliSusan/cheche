@@ -1,6 +1,7 @@
 from rest_framework.authtoken.models import Token
 from django.shortcuts import render
 from Quicklab import models
+from .serializers import PracticalSerializer
 from django.http import HttpResponse, JsonResponse
 from rest_framework.parsers import JSONParser
 from . import serializers
@@ -138,3 +139,8 @@ class LoginAPI(ObtainAuthToken):
             "token": token.key
         })
 
+class practicalApi(generics.GenericAPIView):
+    serializer_class = serializers.PracticalSerializer
+    def get(self, request, *args, **kwargs):
+       queryset = models.Practical.objects.all()
+       serializer_class = serializers.PracticalSerializer

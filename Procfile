@@ -1,1 +1,1 @@
-web: gunicorn <Quicklab>.wsgi --log-file -
+web: gunicorn Quicklab.wsgi --log-file -
