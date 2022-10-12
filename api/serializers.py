@@ -9,7 +9,7 @@ class TeacherSerializer(serializers.ModelSerializer):
         fields=['first_name','last_name','username','password', 'email']
         
         
-class TeacherRegisterSerializer(serializers.ModelSerializer):
+class TeacherRegisterModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Teacher
         fields = ( 'first_name', 'last_name', 'username','password','email')
@@ -19,8 +19,6 @@ def create(self, validated_data):
         user = models.Teacher.objects.create(validated_data['username'], validated_data['password'],)
         return user
 
-
-
 class StudentSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Student
@@ -28,7 +26,7 @@ class StudentSerializer(serializers.ModelSerializer):
 
 
 # Register Serializer
-class RegisterSerializer(serializers.ModelSerializer):
+class StudentRegisterModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Student
         fields = ( 'first_name', 'last_name', 'username','password','level')
@@ -41,7 +39,7 @@ def create(self, validated_data):
 class PracticalSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Practical
-        fields=['title','description','imwhereage','instructions', 'subject']
+        fields=['title','description','image','instructions', 'subject']
 
 
 

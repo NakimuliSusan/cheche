@@ -1,7 +1,8 @@
+from pydoc import visiblename
 from rest_framework.authtoken.models import Token
 from django.shortcuts import render
 from Quicklab import models
-from .serializers import PracticalSerializer
+from .serializers import *
 from django.http import HttpResponse, JsonResponse
 from rest_framework.parsers import JSONParser
 from . import serializers
@@ -9,7 +10,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http.response import JsonResponse
 from rest_framework.response import Response
 # from knox.models import AuthToken
-from rest_framework import generics, permissions
+from rest_framework import generics, permissions, viewsets
 from django.contrib.auth import login,authenticate
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 # from knox.views import LoginView as KnoxLoginView
@@ -19,37 +20,10 @@ from rest_framework.authtoken.views import ObtainAuthToken
 
 
 
-@csrf_exempt
-def teacherApi(request,id=0):
-    if request.method=='GET':
-        teachers = models.Teacher.objects.all()
-        teacher_serializer = serializers.TeacherSerializer(teachers,many=True)
-        return JsonResponse(teacher_serializer.data,safe=False)
+class TeacherRegisterViewSet(generics.GenericAPIView):
+    serializer_class = serializers.TeacherRegisterModelSerializer
+    queryset =  models.Teacher.objects.all()
 
-    elif request.method=='POST':
-        teacher_data = JSONParser().parse(request)
-        teacher_serializer = serializers.TeacherSerializer(data=teacher_data)
-        if teacher_serializer.is_valid():
-            teacher_serializer.save()
-            return JsonResponse("Added Successfully",safe=False)
-        return JsonResponse("Failed to add",safe=False)
-    elif request.method=='PUT':
-        teacher_data=JSONParser().parse(request)
-        teacher = models.Teacher.objects.get(middle_name = teacher_data['middle_name'])
-        teacher_serializer=serializers.TeacherSerializer(teacher,data=teacher_data)
-        if teacher_serializer.is_valid():
-            teacher_serializer.save()
-            return JsonResponse("Updated Successfully",safe=False)
-        return JsonResponse("Failed to update",safe=False)
-    
-    elif request.method=='DELETE':
-        teacher=models.Teacher.objects.get(middle_name='middle_name')
-        teacher.delete()
-        return JsonResponse("Deleted successfully",safe=False)
-
-
-class TeacherRegisterAPI(generics.GenericAPIView):
-    serializer_class = serializers.TeacherRegisterSerializer
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -59,64 +33,17 @@ class TeacherRegisterAPI(generics.GenericAPIView):
         "teacher": serializers.TeacherSerializer(teacher, context=self.get_serializer_context()).data,
         # "token": AuthToken.objects.create(student)[1]
         })
-
-@csrf_exempt
-def practicalApi(request,id=0):
-    if request.method=='GET':
-        practicals = models.Practical.objects.all()
-        practical_serializer = serializers.PracticalSerializer(practicals,many=True)
-        return JsonResponse(practical_serializer.data,safe=False)
-    elif request.method=='POST':
-        practical_data = JSONParser().parse(request)
-        practical_serializer = serializers.PracticalSerializer(data=practical_data)
-        if practical_serializer.is_valid():
-            practical_serializer.save()
-            return JsonResponse("Added Successfully",safe=False)
-        return JsonResponse("Failed to add",safe=False)
-    elif request.method=='PUT':
-        practical_data=JSONParser().parse(request)
-        practical = models.Practical.objects.get(middle_name = practical_data['middle_name'])
-        practical_serializer=serializers.PracticalSerializer(practical,data=practical_data)
-        if practical_serializer.is_valid():
-            practical_serializer.save()
-            return JsonResponse("Updated Successfully",safe=False)
-        return JsonResponse("Failed to update",safe=False)
-    elif request.method=='DELETE':
-        practical=models.Practical.objects.get(middle_name='middle_name')
-        practical.delete()
-        return JsonResponse("Deleted successfully",safe=False)
+    def get(self, request, *args, **kwargs):
+        teachers = models.Teacher.objects.all()
+        teacher_serializer=serializers.TeacherSerializer(teachers,many=True)
+        return JsonResponse(teacher_serializer.data,safe=False)
 
 
 
-@csrf_exempt
-def studentApi(request,id=0):
-    if request.method=='GET':
-        students = models.Student.objects.all()
-        student_serializer = serializers.StudentSerializer(students,many=True)
-        return JsonResponse(student_serializer.data,safe=False)
-    elif request.method=='POST':
-        student_data = JSONParser().parse(request)
-        student_serializer = serializers.StudentSerializer(data=student_data)
-        if student_serializer.is_valid():
-            student_serializer.save()
-            return JsonResponse("Added Successfully",safe=False)
-        return JsonResponse("Failed to add",safe=False)
-    elif request.method=='PUT':
-        student_data=JSONParser().parse(request)
-        student = models.Student.objects.get(middle_name = student_data['middle_name'])
-        student_serializer=serializers.StudentSerializer(student,data=student_data,many=True)
-        if student_serializer.is_valid():
-            student_serializer.save()
-            return JsonResponse("Updated Successfully",safe=False)
-        return JsonResponse("Failed to update",safe=False)
-    elif request.method=='DELETE':
-        student=models.Student.objects.get(middle_name='middle_name')
-        student.delete()
-        return JsonResponse("Deleted successfully",safe=False)
+class StudentRegisterViewset(generics.GenericAPIView):
+    serializer_class = serializers.StudentRegisterModelSerializer
+    queryset =  models.Student.objects.all()
 
-# Register API
-class RegisterAPI(generics.GenericAPIView):
-    serializer_class = serializers.RegisterSerializer
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -126,6 +53,21 @@ class RegisterAPI(generics.GenericAPIView):
         "student": serializers.StudentSerializer(student, context=self.get_serializer_context()).data,
         # "token": AuthToken.objects.create(student)[1]
         })
+    def get(self, request, *args, **kwargs):
+        students = models.Student.objects.all()
+        student_serializer=serializers.StudentSerializer(students,many=True)
+        return JsonResponse(student_serializer.data,safe=False)
+
+
+class PracticalViewset(generics.GenericAPIView): 
+    def get(self, request, *args, **kwargs):
+        practicals = models.Practical.objects.all()
+        practical_serializer=serializers.PracticalSerializer(practicals,many=True)
+        return JsonResponse(practical_serializer.data,safe=False)
+
+
+
+# Register API
 class LoginAPI(ObtainAuthToken):
     permission_classes = (permissions.AllowAny,)
     def post(self, request, ):
@@ -141,6 +83,5 @@ class LoginAPI(ObtainAuthToken):
 
 # class PracticalAPI(generics.GenericAPIView):
 #     serializer_class = serializers.PracticalSerializer
-#     def get(self, request, *args, **kwargs):
-#        queryset = models.Practical.objects.all()
-#        serializer_class = serializers.PracticalSerializer
+#     queryset = models.Practical.objects.all()
+

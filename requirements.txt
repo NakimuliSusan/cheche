@@ -27,5 +27,4 @@ sqlparse==0.4.2
 uritemplate==4.1.1
 urllib3==1.26.12
 whitenoise==6.2.0
-corsheaders==2.2.0
-
+corsheaders==4.0.6

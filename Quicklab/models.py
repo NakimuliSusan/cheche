@@ -80,3 +80,14 @@ class Practical(models.Model):
 
 
 
+# class Person (models.Model):
+#     first_name=models.CharField(max_length=20)
+#     last_name=models.CharField(max_length=20)
+#     username=models.CharField(max_length=20)
+#     email=models.EmailField(max_length=20)
+#     password=models.CharField(max_length=8)
+#     practicals = models.ForeignKey("Practical", on_delete=models.CASCADE, related_name="Teacher_practical", null=True)
+#     student = models.ForeignKey("Student",on_delete=models.CASCADE,related_name='Teacher_student', null=True )
+
+#     def __str__(self):
+#         return '{} {}'.format(self.first_name, self.last_name, self.username, self.email,self.student, self.student,self.practicals.title)

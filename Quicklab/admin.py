@@ -24,3 +24,7 @@ class ToolsAdmin(admin.ModelAdmin):
 admin.site.register(models.Tool, ToolsAdmin)
 
 
+# class PersonAdmin(admin.ModelAdmin):
+#      list_display = ('first_name', 'last_name', 'username', 'email') 
+#      search_fields = ('first_name', 'last_name')
+# admin.site.register(models.Person, PersonAdmin)
