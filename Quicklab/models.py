@@ -49,7 +49,7 @@ class Practical(models.Model):
     title = models.CharField(max_length=20)
     description = models.TextField(max_length=255)
     image = models.ImageField()
-    instructions = models.TextField(max_length=255, blank=True)
+    instructions = models.TextField(null=True, blank=True, max_length=1260)
     SUBJECTS = (
            ("Physics", "Physics"),
            ("Biology", "Biology"),

@@ -33,6 +33,7 @@ class TeacherRegisterViewSet(generics.GenericAPIView):
         "teacher": serializers.TeacherSerializer(teacher, context=self.get_serializer_context()).data,
         # "token": AuthToken.objects.create(student)[1]
         })
+
     def get(self, request, *args, **kwargs):
         teachers = models.Teacher.objects.all()
         teacher_serializer=serializers.TeacherSerializer(teachers,many=True)
@@ -53,6 +54,7 @@ class StudentRegisterViewset(generics.GenericAPIView):
         "student": serializers.StudentSerializer(student, context=self.get_serializer_context()).data,
         # "token": AuthToken.objects.create(student)[1]
         })
+
     def get(self, request, *args, **kwargs):
         students = models.Student.objects.all()
         student_serializer=serializers.StudentSerializer(students,many=True)
@@ -75,7 +77,7 @@ class LoginAPI(ObtainAuthToken):
         password=request.data['password']
         user=authenticate(request,username=username, password=password)
         print(user)
-        token=Token.objects.create(user=user)
+        token, _=Token.objects.get_or_create(user=user)
         return Response({
             'body': 'login successful',
             "token": token.key
