@@ -23,8 +23,9 @@ class ToolsAdmin(admin.ModelAdmin):
      search_fields = ('label', 'subject', 'image')
 admin.site.register(models.Tool, ToolsAdmin)
 
+class InstructionsAdmin(admin.ModelAdmin):
+     list_display = (  'title', 'image') 
+     search_fields = ( 'title', 'image')
+admin.site.register(models.Instruction, InstructionsAdmin)
 
-# class PersonAdmin(admin.ModelAdmin):
-#      list_display = ('first_name', 'last_name', 'username', 'email') 
-#      search_fields = ('first_name', 'last_name')
-# admin.site.register(models.Person, PersonAdmin)
+

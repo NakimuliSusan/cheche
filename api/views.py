@@ -40,7 +40,7 @@ class TeacherRegisterViewSet(generics.GenericAPIView):
         return JsonResponse(teacher_serializer.data,safe=False)
 
 
-
+# Register Student Api
 class StudentRegisterViewset(generics.GenericAPIView):
     serializer_class = serializers.StudentRegisterModelSerializer
     queryset =  models.Student.objects.all()
@@ -67,9 +67,17 @@ class PracticalViewset(generics.GenericAPIView):
         practical_serializer=serializers.PracticalSerializer(practicals,many=True)
         return JsonResponse(practical_serializer.data,safe=False)
 
+        
+
+class SinglePracticalViewset (generics.GenericAPIView):
+    def get(self, request, *args, **kwargs):
+        practical = models.Practical.objects.get(id=id)
+        practical_serializer=serializers.PracticalSerializer(practical,many=True)
+        return JsonResponse(practical_serializer.data,safe=False)
 
 
-# Register API
+
+# Login API
 class LoginAPI(ObtainAuthToken):
     permission_classes = (permissions.AllowAny,)
     def post(self, request, ):
@@ -83,7 +91,10 @@ class LoginAPI(ObtainAuthToken):
             "token": token.key
         })
 
-# class PracticalAPI(generics.GenericAPIView):
-#     serializer_class = serializers.PracticalSerializer
-#     queryset = models.Practical.objects.all()
+#Instruction API
+class InstructionViewset(generics.GenericAPIView): 
+    def get(self, request, *args, **kwargs):
+        instructions = models.Instruction.objects.all()
+        instruction_serializer=serializers.InstructionSerializer(instructions,many=True)
+        return JsonResponse(instruction_serializer.data,safe=False)
 

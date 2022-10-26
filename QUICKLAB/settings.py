@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import django_heroku
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,6 +28,10 @@ SECRET_KEY = 'django-insecure-h3)d8z^kxy(&i+8bh-np7lz*k4994uk3j5gg2^!c^g$2wr)kjc
 DEBUG = True
 
 ALLOWED_HOSTS = []
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 # Application definition

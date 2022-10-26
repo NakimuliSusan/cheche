@@ -1,3 +1,5 @@
+from dataclasses import fields
+from pyexpat import model
 from rest_framework import serializers
 from django.contrib.auth.models import User
 
@@ -40,6 +42,18 @@ class PracticalSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Practical
         fields=['title','description','image','instructions', 'subject']
+
+
+
+class InstructionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Instruction
+        fields = ['title','image','practical']
+
+
+    
+
+
 
 
 
