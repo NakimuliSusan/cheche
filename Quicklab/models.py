@@ -75,7 +75,7 @@ class Practical(models.Model):
     comment_description = models.TextField(max_length=255, blank=True, null=True)
     tools = models.ForeignKey(Tool, on_delete=models.CASCADE, related_name='Tool_practical')
     def __str__(self):
-        return '{}'.format(self.title)
+        return '{} {}'.format(self.title)
 
 
 # table for instructions
