@@ -158,8 +158,3 @@ REST_FRAMEWORK = {
 
 django_heroku.settings(locals())
 
-# CORS_ORIGIN_WHITELIST = [
-#     '127.0.0.1',
-#     'http://localhost:4200',
-#     'http://yoursite.com'
-# ]
