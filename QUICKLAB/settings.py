@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 import django_heroku
 import os
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -49,6 +52,7 @@ INSTALLED_APPS = [
     'api',
     'drf_yasg',
     'corsheaders',
+    'cloudinary'
    
 
 ]
@@ -99,7 +103,7 @@ DATABASES = {
         'USER': 'cheche',
         'PASSWORD':'user',
         'HOST': 'localhost',
-        'PORT': 5430,
+        'PORT': 5432,
     }
 }
 
@@ -157,4 +161,11 @@ REST_FRAMEWORK = {
 
 
 django_heroku.settings(locals())
+
+
+cloudinary.config( 
+  cloud_name = "duuajd4sr", 
+  api_key = "567664627634222", 
+  api_secret = "kHnJn18vOPp3WaRToS5Rg8gBXEo",
+)
 

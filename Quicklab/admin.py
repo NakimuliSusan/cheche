@@ -24,8 +24,8 @@ class ToolsAdmin(admin.ModelAdmin):
 admin.site.register(models.Tool, ToolsAdmin)
 
 class InstructionsAdmin(admin.ModelAdmin):
-     list_display = (  'title', 'image') 
-     search_fields = ( 'title', 'image')
+     list_display = (  'instruction_title', 'image') 
+     search_fields = ( 'instruction_title', 'image')
 admin.site.register(models.Instruction, InstructionsAdmin)
 
 

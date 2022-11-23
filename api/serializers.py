@@ -3,6 +3,7 @@ from pyexpat import model
 from rest_framework import serializers
 from django.contrib.auth.models import User
 
+
 from Quicklab import models
 
 class TeacherSerializer(serializers.ModelSerializer):
@@ -41,14 +42,17 @@ def create(self, validated_data):
 class PracticalSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Practical
-        fields=['title','description','image','instructions', 'subject']
+        fields='__all__'
 
 
 
 class InstructionSerializer(serializers.ModelSerializer):
+    practical= PracticalSerializer(many=True)
     class Meta:
         model = models.Instruction
-        fields = ['title','image','practical']
+        fields = '__all__'
+
+   
 
 
     

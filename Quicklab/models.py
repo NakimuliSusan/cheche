@@ -1,5 +1,6 @@
 from email.policy import default
 from django.db import models
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 class Student(models.Model):
@@ -35,7 +36,7 @@ class Teacher (models.Model):
 
 class Tool(models.Model):
     label = models.CharField(max_length=255, blank=True)
-    image = models.ImageField(upload_to='images')
+    image = CloudinaryField('images')
     SUBJECTS = (
            ("Physics", "Physics"),
            ("Biology", "Biology"),
@@ -47,7 +48,7 @@ class Tool(models.Model):
 class Practical(models.Model):
     title = models.CharField(max_length=20)
     description = models.TextField(max_length=255)
-    image = models.ImageField(upload_to='images')
+    image = CloudinaryField('images')
 #     instructions = models.ManyToManyField(Instruction)
     SUBJECTS = (
            ("Physics", "Physics"),
@@ -75,15 +76,14 @@ class Practical(models.Model):
     comment_description = models.TextField(max_length=255, blank=True, null=True)
     tools = models.ForeignKey(Tool, on_delete=models.CASCADE, related_name='Tool_practical')
     def __str__(self):
-        return '{} {}'.format(self.title)
+        return '{}'.format(self.title)
 
 
 # table for instructions
 
 class Instruction(models.Model):
        practical = models.ManyToManyField(Practical , related_name="instructions")
-       title = models.CharField(max_length=100)
-       image = models.ImageField(upload_to='images')
-       # def get_practicals(self):
-       #  return "\n".join([p.practical for p in self.practical.all()])
+       instruction_title = models.CharField(max_length=100)
+       image = CloudinaryField('images')
+      
 
